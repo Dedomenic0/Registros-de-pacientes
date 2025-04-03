@@ -135,3 +135,15 @@ function salvarDados() {
     fetchSalvar({dados})
     console.log({dados});
 }
+
+addEventListener("click", (e) => {
+    console.log(e.target.id);
+    
+})
+
+setTimeout(() => {
+    const teste = tabela.querySelector("tr:nth-child(2)");
+    
+    console.log("teste para pegar conteudo = " + teste.innerHTML);
+    
+}, 2000)
