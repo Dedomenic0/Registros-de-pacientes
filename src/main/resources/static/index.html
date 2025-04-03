@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Pacientes</title>
+
+</head>
+<body>
+    <header>
+        <h1>Pacientes com alterações hematologicas</h1>
+    </header>
+    <main class="container">
+        <section class="cadastro_paciente">
+            <input type="date" id="data">
+            <input type="text" placeholder="Nome" id="nome_paciente">
+            <input type="text" placeholder="Responsavel" id="responsavel">
+            <textarea name="" id="achados" placeholder="Achados" id = "achados"></textarea>
+            <input type="button" value="Salvar" id="salvar">
+        </section>
+        <section class="consulta_paciente">
+            <div>
+                <h2>pesquisa</h2>
+                <input id="pesquisa" type="text" placeholder="Nome para pesquisa">
+            </div>
+                <div>
+                    <table class="tabela_paciente">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Nome</th>
+                                <th>Responsavel</th>
+                                <th>Achados</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela"></tbody>
+                    </table>
+                    <input class="consulta_paciente_botao" type="button" value="primeira" id="primeiro">
+                    <input class="consulta_paciente_botao" type="button" value="anterior" id="anterior">
+                    <input class="consulta_paciente_botao" type="button" value="proximo" id="proximo">
+                    <input class="consulta_paciente_botao" type="button" value="ultima" id="ultima">
+                </div>
+        </section>
+    </main>
+    <footer></footer>
+    <script type="module" src="script.js"></script>
+</body>
+</html> 

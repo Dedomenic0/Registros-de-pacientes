@@ -1,0 +1,1 @@
+ALTER TABLE pacientes ADD COLUMN deletado DATE DEFAULT NULL;
