@@ -15,12 +15,16 @@ import java.util.UUID;
 
 @Service
 public class ImagenService {
-    private final String destino = System.getProperty("user.dir") + "\\src\\main\\resources\\storage\\";
+    private String destino = System.getProperty("user.dir") + "/storage/";
+    File pasta = new File(destino);
 
     @Autowired
     PacienteRepository pacienteRepository;
 
     public void salvar(MultipartFile imagem, Long id) throws IOException {
+        if (!pasta.exists()) {
+            pasta.mkdir();
+        }
 
         Optional<Paciente> paciente = pacienteRepository.findById(id);
 
@@ -33,13 +37,16 @@ public class ImagenService {
 
     public Resource retornaImagem(Long id) throws IOException {
 
+
         Optional<Paciente> paciente = pacienteRepository.findById(id);
 
         if (paciente.get().getImagem() == null) {
             return null;
         }
         String caminhoImagem = destino + paciente.get().getImagem();
+        System.out.println(System.getProperty("user.dir") );
         return new FileUrlResource(caminhoImagem);
+
     }
 
     private String gerarNovoNome(String nomeOriginal)
