@@ -4,26 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Pacientes</title>
-
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Pacientes com alterações hematologicas</h1>
+        <h1>REGISTRO DE PACIENTES COM ALTERAÇÕES HEMATOLÓGICAS</h1>
     </header>
     <main class="container">
         <section class="cadastro_paciente">
-            <input type="date" id="data">
-            <input type="text" placeholder="Nome" id="nome_paciente">
-            <input type="text" placeholder="Responsavel" id="responsavel">
-            <textarea name="" id="achados" placeholder="Achados" id = "achados"></textarea>
+            <label   for="data">Data:</label>
+            <input class="cadastro_paciente_envio" type="date" id="data">
+            <label for="nome_paciente">Nome Do Paciente:</label>
+            <input class="cadastro_paciente_envio" type="text"  id="nome_paciente">
+            <label  for="responsavel">Medico responsavel:</label>
+            <input class="cadastro_paciente_envio" type="text"  id="responsavel">
+            <label for="achados">Achados em lâmina:</label>
+            <textarea class="cadastro_paciente_envio_text" name="" id="achados" id = "achados"></textarea>
             <input type="button" value="Salvar" id="salvar">
         </section>
         <section class="consulta_paciente">
-            <div>
-                <h2>pesquisa</h2>
+            <div class="consulta_paciente_container">
+                <h2>PESQUISA</h2>
                 <input id="pesquisa" type="text" placeholder="Nome para pesquisa">
+                <div class="imagem_container">
+                    <input class="enviar_imagem" type="file" id="imagem" accept="image/*">
+                    <input class="salvar_imagem_paciente" type="submit" value="Enviar Imagem" id="salvar_imagem">
+                </div>
             </div>
-                <div>
+                <div class="tabela_paciente_container">
                     <table class="tabela_paciente">
                         <thead>
                             <tr>
@@ -35,12 +44,21 @@
                         </thead>
                         <tbody id="tabela"></tbody>
                     </table>
-                    <input class="consulta_paciente_botao" type="button" value="primeira" id="primeiro">
-                    <input class="consulta_paciente_botao" type="button" value="anterior" id="anterior">
-                    <input class="consulta_paciente_botao" type="button" value="proximo" id="proximo">
-                    <input class="consulta_paciente_botao" type="button" value="ultima" id="ultima">
                 </div>
+                <div class="paginacao_container">
+                    <input class="consulta_paciente_botao" type="button" value="<<" id="primeiro">
+                    <input class="consulta_paciente_botao" type="button" value="<" id="anterior">
+                    <p class="pagina_atual"></p>
+                    <input class="consulta_paciente_botao" type="button" value=">" id="proximo">
+                    <input class="consulta_paciente_botao" type="button" value=">>" id="ultima">
+                </div>
+                <div class="add_novo_botao"></div>
         </section>
+        <div id="overlay"></div>
+        <div id="popup">
+            <button id="closePopUp">X</button>
+            <img id="imagem_paciente" src="" alt="foto da celula alterada do paciente">
+        </div>
     </main>
     <footer></footer>
     <script type="module" src="script.js"></script>

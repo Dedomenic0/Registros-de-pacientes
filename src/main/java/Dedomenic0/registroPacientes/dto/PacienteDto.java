@@ -6,12 +6,14 @@ import java.time.LocalDate;
 
 
 public record PacienteDto(
+        Long Id,
         LocalDate data,
         String nome,
         String revisor,
         String achados
 ) {
     public PacienteDto (Paciente paciente){
-        this(paciente.getData(), paciente.getNome(), paciente.getRevisor(), paciente.getAchados());
+        this(paciente.getId(),paciente.getData(), paciente.getNome(),
+                paciente.getRevisor(), paciente.getAchados());
     }
 }

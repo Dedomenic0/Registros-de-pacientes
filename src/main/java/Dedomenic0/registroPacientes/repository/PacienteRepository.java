@@ -11,12 +11,12 @@ import java.util.List;
 
 public interface PacienteRepository extends JpaRepository<Paciente, Long> {
 
-    PacienteDto findByNome(String nome);
-
-    Paciente findPacienteByNome(String nome);
-
     Page<PacienteDto> findAllByDeletadoIsNull(Pageable pageable);
 
     @Query(value = "SELECT p FROM Paciente p WHERE p.nome like %:nome% AND p.deletado is null")
     List<PacienteDto> findLikeNome(String nome);
+
+    PacienteDto findPacienteById(Long id);
+
+    Paciente findAllById(Long aLong);
 }

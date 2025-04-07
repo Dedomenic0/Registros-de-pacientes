@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.io.File;
 import java.time.LocalDate;
 
 @Entity
@@ -24,14 +25,26 @@ public class Paciente {
     private String revisor;
     private String achados;
     private LocalDate deletado;
+    private String imagem;
 
     public void deletarPaciente() {
         this.deletado = LocalDate.now();
     }
 
     public void atualizarPaciente(PacienteDto pacienteDto) {
+        this.data = pacienteDto.data();
         this.nome = pacienteDto.nome();
         this.revisor = pacienteDto.revisor();
         this.achados = pacienteDto.achados();
+    }
+
+    public Paciente(PacienteDto paciente) {
+        this.data = paciente.data();
+        this.nome = paciente.nome();
+        this.revisor = paciente.revisor();
+        this.achados = paciente.achados();
+    }
+    public void salvarImagem(String imagemCaminho) {
+        this.imagem = imagemCaminho;
     }
 }

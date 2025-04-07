@@ -17,6 +17,8 @@ public class PacienteService {
 
     @Autowired
     private PacienteRepository repository;
+    @Autowired
+    private ImagenService imagenSave;
 
     public Page<PacienteDto> pegaPacientes(Pageable pageable) {
         try {
@@ -26,8 +28,8 @@ public class PacienteService {
         }
     }
 
-    public void cadastrarPaciente(Paciente paciente) {
-        repository.save(paciente);
+    public void cadastrarPaciente(PacienteDto paciente)  {
+        repository.save(new Paciente(paciente));
     }
 
     public List<PacienteDto> pegaUmPaciente(String nome) {
@@ -39,8 +41,17 @@ public class PacienteService {
 
     }
 
-    public void deletarPaciente(String nome) {
-        Paciente paciente = repository.findPacienteByNome(nome);
+    public PacienteDto pegaUmPacienteId(Long id) {
+        PacienteDto pacienteDto = repository.findPacienteById(id);
+        if (pacienteDto == null) {
+            throw  new VerificacaoException("Paciente nao encontrado");
+        }
+        return pacienteDto;
+
+    }
+
+    public void deletarPaciente(Long id) {
+        Paciente paciente = repository.findAllById(id);
         if (paciente == null) {
             throw new VerificacaoException("Paciente nao encontrado");
         }
@@ -48,14 +59,13 @@ public class PacienteService {
         repository.save(paciente);
     }
 
-    public PacienteDto atualizarPaciente(String nome, PacienteDto pacienteDto) {
-        Paciente paciente = repository.findPacienteByNome(nome);
+    public Paciente atualizarPaciente(Long id, PacienteDto pacienteDto) {
+        Paciente paciente = repository.findAllById(id);
         if (paciente == null) {
             throw new VerificacaoException("Paciente nao encontrado");
         }
         paciente.atualizarPaciente(pacienteDto);
         repository.save(paciente);
-        return repository.findByNome(nome);
-
+        return repository.findAllById(id);
     }
 }
