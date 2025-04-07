@@ -110,7 +110,6 @@ const paginas = {
         }
         tabela.innerHTML = "";
         fetchData();
-        console.log(page);
     },
     anterior() {
         page--
@@ -119,7 +118,6 @@ const paginas = {
         }
         tabela.innerHTML = "";
         fetchData();
-        console.log(page);
     },
     setPage(pagina) {
         if (page < 0) {
@@ -132,7 +130,6 @@ const paginas = {
         }
         tabela.innerHTML = "";
         fetchData();
-        console.log(page);
 
     }
 }
@@ -239,8 +236,6 @@ function pegaLinhaSelecionada() {
 
 
         linha.classList.add("selected");
-
-        console.log("Linha selecionada:", linha.id);
         return linha.id;
     });
 

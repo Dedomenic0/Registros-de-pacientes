@@ -17,7 +17,6 @@ async function fetchUmPaciente(nomePaciente) {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 if(data.length == 0) {
                     alert("Nenhum paciente encontrado")
                 }
@@ -66,7 +65,6 @@ async function fetchSalvar({dados}) {
         })
             .then(response => response)
             .then(data => {
-                console.log(data);
             })
 
     } catch (error) {
@@ -110,7 +108,6 @@ async function fetchDeletar(id) {
             .then(response => response
             )
             .then(data => {
-                console.log(data);
             })
 
     } catch (error) {
@@ -136,7 +133,6 @@ async function fetchModificarPaciente(dados) {
         })
             .then(response => response)
             .then(data => {
-                console.log(data);
             })
 
     } catch (error) {
@@ -156,7 +152,6 @@ async function fetchUmPacienteEditar(id) {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 jogarDadosParaInputs(data);
                 
             })
@@ -182,17 +177,17 @@ function jogarDadosParaInputs(paciente){
     html.get(".add_novo_botao").innerHTML = ""
 
     html.get("#b_editar").addEventListener("click", () => {
-        const dados2 = {
+        const dados = {
             data: html.get("#data_txt").value,
             nome: html.get("#nome_paciente_txt").value,
             revisor: html.get("#responsavel_txt").value,
             achados: html.get("#achados_txt").value,
-            id: paciente.id,
+            id: paciente.Id,
         };
         
-            fetchModificarPaciente(dados2);
+            fetchModificarPaciente(dados);
             tabela.innerHTML = "";
-            fetchUmPaciente(dados2.nome);
+            fetchUmPaciente(dados.nome);
     })
 }
 
