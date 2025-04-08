@@ -10,6 +10,7 @@
     --azul--secundaria: #537794;
     --amarelo--primario: #F7E7DC;
     --azul--botoe: #123458;
+    --cor--hover--botoes: #224a75;
 }
 
 body {
@@ -77,7 +78,7 @@ h2 {
 }
 
 .tabela_paciente {
-    width: 96vw;
+    width: 96vw ;
     border: var(--cor--black) solid 2px;
     text-align: center;
     background-color: var(--cor--terciaria);
@@ -85,7 +86,7 @@ h2 {
     border-collapse: separate;
     border-spacing: 0;
     overflow: hidden;
-}   
+}
 
 thead {
     background-color: var(--azul--primaria);
@@ -114,13 +115,17 @@ tr:hover {
     gap: 1rem;
 }
 
-.consulta_paciente_botao{
+.consulta_paciente_botao_paginacao{
     padding: 1px 20px;
     background-color: var(--amarelo--primario);
     border: var(--cor--black) solid 2px;
     border-radius: 10px;
     align-items: center;
     font-size: 20px;
+    cursor: pointer;
+}
+.consulta_paciente_botao_paginacao:hover {
+    background-color: #faf7f5;
 }
 
 .pagina_atual {
@@ -151,6 +156,7 @@ tr:hover {
     align-items: center;
     font-size: 16px;
     text-align: center;
+    resize: none;
 }
 
 #pesquisa {
@@ -174,8 +180,8 @@ tr:hover {
     background-color: var(--cor--terciaria);
     border: none;
     align-items: start;
-    font-size: 16px;
     text-align: center;
+
 }
 
 .div_botao {
@@ -207,6 +213,11 @@ tr:hover {
     margin: 1rem;
     color: white;
     font-weight: 600;
+    cursor: pointer;
+}
+
+#salvar:hover, .salvar_imagem_paciente:hover, #deletar:hover, #editar:hover {
+    background-color: var(--cor--hover--botoes);
 }
 
 .add_novo_botao{
@@ -230,6 +241,7 @@ tr:hover {
     text-align: center;
     color: white;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .imagem_container{
@@ -250,6 +262,7 @@ tr:hover {
     color: rgb(0, 0, 0);
     font-weight: 600;
     background-color: var(--cor--primaria);
+    cursor: pointer;
 }
 
 .salvar_imagem_paciente{
@@ -260,6 +273,7 @@ tr:hover {
     color: white;
     font-weight: 600;
     background-color: var(--azul--botoe);
+    cursor: pointer;
 }
 
 #popup {

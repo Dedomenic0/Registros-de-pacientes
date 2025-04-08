@@ -44,7 +44,6 @@ public class ImagenService {
             return null;
         }
         String caminhoImagem = destino + paciente.get().getImagem();
-        System.out.println(System.getProperty("user.dir") );
         return new FileUrlResource(caminhoImagem);
 
     }

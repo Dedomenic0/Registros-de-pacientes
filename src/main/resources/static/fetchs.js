@@ -1,3 +1,5 @@
+const route = "http://localhost:8080";
+
 const html = {
     get(elemento) {
         return document.querySelector(elemento)
@@ -5,10 +7,9 @@ const html = {
 }
 const tabela = html.get("#tabela");
 
-
 async function fetchUmPaciente(nomePaciente) {
     try {
-        await fetch(`http://localhost:8080/paciente/${nomePaciente}?&sort=data,desc`, {
+        await fetch(`${route}/paciente/${nomePaciente}?&sort=data,desc`, {
             method: "GET",
             mode: "cors",
             headers: {
@@ -34,7 +35,7 @@ async function fetchUmPaciente(nomePaciente) {
                     tabela.appendChild(tr)
                 })
             })
-            
+
 
     } catch (error) {
         console.error("Erro ao buscar os dados:", error);
@@ -43,12 +44,12 @@ async function fetchUmPaciente(nomePaciente) {
 }
 
 async function fetchSalvar({dados}) {
-    
+
     if(dados.data == "" || dados.nome == "" || dados.revisor == "" || dados.achados == "") {
         alert("Preencha todos os campos")
         return;
     }
-    
+
     try {
         await fetch(`http://localhost:8080/paciente`, {
             method: "POST",
@@ -56,7 +57,7 @@ async function fetchSalvar({dados}) {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ 
+            body: JSON.stringify({
                 data: dados.data,
                 nome: dados.nome,
                 revisor: dados.revisor,
@@ -81,14 +82,14 @@ async function fetchSalvarImagem({dados}) {
     const formData = new FormData();
     formData.append("imagem", dados.imagem);
     try {
-        await fetch(`http://localhost:8080/paciente/imagem/${dados.Id}`, {
+        await fetch(`${route}/paciente/imagem/${dados.Id}`, {
             method: "POST",
             mode: "cors",
             body: formData
         })
             .then(response => response)
             .then(data => {
-                
+
             })
     } catch (error) {
         console.error("Erro ao salvar imagem:", error);
@@ -98,7 +99,7 @@ async function fetchSalvarImagem({dados}) {
 async function fetchDeletar(id) {
 
     try {
-        await fetch(`http://localhost:8080/paciente/${id}`, {
+        await fetch(`${route}/paciente/${id}`, {
             method: "DELETE",
             mode: "cors",
             headers: {
@@ -113,12 +114,11 @@ async function fetchDeletar(id) {
     } catch (error) {
         console.error("Erro ao deletar paciente:", error);
     }
-
 }
 
 async function fetchModificarPaciente(dados) {
     try {
-        await fetch(`http://localhost:8080/paciente/${dados.id}`, {
+        await fetch(`${route}/paciente/${dados.id}`, {
             method: "PUT",
             mode: "cors",
             headers: {
@@ -138,12 +138,11 @@ async function fetchModificarPaciente(dados) {
     } catch (error) {
         console.error("Erro ao modificar paciente:", error);
     }
-
 }
 
 async function fetchUmPacienteEditar(id) {
     try {
-        await fetch(`http://localhost:8080/paciente/id/${id}`, {
+        await fetch(`${route}/paciente/id/${id}`, {
             method: "GET",
             mode: "cors",
             headers: {
@@ -153,14 +152,10 @@ async function fetchUmPacienteEditar(id) {
             .then(response => response.json())
             .then(data => {
                 jogarDadosParaInputs(data);
-                
             })
-            
-
     } catch (error) {
         console.error("Erro ao buscar os dados:", error);
     }
-
 }
 
 function jogarDadosParaInputs(paciente){
@@ -184,8 +179,7 @@ function jogarDadosParaInputs(paciente){
             achados: html.get("#achados_txt").value,
             id: paciente.Id,
         };
-        
-            fetchModificarPaciente(dados);
+            fetchModificarPaciente(dados)
             tabela.innerHTML = "";
             fetchUmPaciente(dados.nome);
     })
@@ -193,10 +187,9 @@ function jogarDadosParaInputs(paciente){
 
 async function fetchPegarImagem(id) {
     try {
-        await fetch(`http://localhost:8080/paciente/imagem/${id}`, {
+        await fetch(`${route}/paciente/imagem/${id}`, {
             method: "GET",
             mode: "cors",
-            
         })
             .then(response => response.blob())
             .then(data => {
@@ -208,12 +201,9 @@ async function fetchPegarImagem(id) {
                 html.get("#imagem_paciente").src = url;
                 showPopup();
             })
-            
-
     } catch (error) {
         console.error("Erro ao buscar os dados:", error);
     }
-    
 }
 
 function showPopup() {

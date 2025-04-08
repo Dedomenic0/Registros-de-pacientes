@@ -36,7 +36,7 @@ public class PacienteController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<String> addPaciente(@RequestPart("paciente") PacienteDto paciente)  {
+    public ResponseEntity<String> addPaciente(@RequestBody PacienteDto paciente)  {
         service.cadastrarPaciente(paciente);
 
         return ResponseEntity.ok().build();

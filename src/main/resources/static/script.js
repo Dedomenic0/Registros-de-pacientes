@@ -1,5 +1,6 @@
 import {fetchPegarImagem, fetchUmPaciente, fetchSalvar, fetchDeletar, fetchUmPacienteEditar, fetchSalvarImagem } from "./fetchs.js";
 
+const route = "http://localhost:8080";
 const html = {
     get(elemento) {
         return document.querySelector(elemento)
@@ -9,7 +10,6 @@ const html = {
 const tabela = html.get("#tabela")
 let perPage = 10;
 let page = 0;
-
 
 fetchData();
 let totalPages = 0;
@@ -81,7 +81,7 @@ function editarPaciente() {
 async function fetchData() {
     tabela.innerHTML = "";
     try {
-        await fetch(`http://localhost:8080/paciente?size=${perPage}&page=${page}&sort=data,desc`, {
+        await fetch(`${route}/paciente?size=${perPage}&page=${page}&sort=data,desc`, {
             method: "GET",
             mode: "cors",
             headers: {
@@ -149,13 +149,11 @@ function addDadosTabela(data) {
                 <td>${data.achados}</td>
             `
         tabela.appendChild(tr)
-        
+
     })
     const div = html.get(".add_novo_botao");
     div.innerHTML = "";
 }
-
-
 
 function createListeners() {
     html.get("#primeiro").addEventListener("click", () => {
@@ -170,7 +168,7 @@ function createListeners() {
         html.get("#anterior").addEventListener("click", () => {
             paginas.anterior()
         })
-    
+
     salvarImagem();
     document.addEventListener("dblclick", (e) => {
         if (e.target.closest("td")) {
@@ -181,7 +179,6 @@ function createListeners() {
 }
 
 createListeners();
-
 
 function salvarDados() {
     const dados = {
@@ -223,7 +220,6 @@ function addBotoes() {
     div.appendChild(editar);
 }
 
-
 function pegaLinhaSelecionada() {
     const tabelas = document.querySelector("#tabela");
     tabelas.addEventListener("click", (event) => {
@@ -241,16 +237,11 @@ function pegaLinhaSelecionada() {
 
 }
 
-
     html.get("#closePopUp").addEventListener("click", () => {
         closePopup();
     });
-    
-
 
 function closePopup() {
     document.getElementById("overlay").style.display = "none";
     document.getElementById("popup").style.display = "none";
   }
-
-  
