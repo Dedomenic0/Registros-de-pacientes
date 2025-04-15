@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <style>
+        body {
+            background-color: rgb(206, 243, 240);
+            box-sizing: border-box;
+            align-items: start;
+            padding: 10%;
+            display: flex;
+            flex-direction: column;
+        }
+        table {
+            width: 60vh;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="id_paciente">Identificador: </label>
+        <input type="number" id="id_paciente"  required>
+        <input type="submit" id="reverter" value="Reverter">
+        <input type="submit" id="deletar" value="Deletar">
+    </form>
+    <main>
+        <h1>Pacientes</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Identificador</th>
+                    <th>Nome</th>
+                    <th>Deletado em</th>
+                </tr>
+            </thead>
+            <tbody id="pacientes">
+            </tbody>
+        </table>
+        <div id="caixa_alerta"></div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
