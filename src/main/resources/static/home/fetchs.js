@@ -31,6 +31,7 @@ async function fetchUmPaciente(nomePaciente) {
                             <td>${data.nome}</td>
                             <td>${data.revisor}</td>
                             <td>${data.achados}</td>
+                            <td>${"nada por hora"}</td>
                         `
                     tabela.appendChild(tr)
                 })
@@ -51,7 +52,7 @@ async function fetchSalvar({dados}) {
     }
 
     try {
-        await fetch(`http://localhost:8080/paciente`, {
+        await fetch(`${route}/paciente`, {
             method: "POST",
             mode: "cors",
             headers: {
@@ -159,11 +160,12 @@ async function fetchUmPacienteEditar(id) {
 }
 
 function jogarDadosParaInputs(paciente){
-    html.get("#tabela").innerHTML = `<tr>
+    html.get("#tabela").innerHTML = `<tr id="editar_paciente_tabela">
     <td><input type="date" id="data_txt" value="${paciente.data}" ></td>
-    <td><input type="text" id="nome_paciente_txt" value="${paciente.nome}" readonly></td>
-    <td><input type="text" id="responsavel_txt" value="${paciente.revisor}" ></td>
+    <td><textarea id="nome_paciente_txt" readonly>${paciente.nome}</textarea></td>
+    <td><textarea id="responsavel_txt" >${paciente.revisor}</textarea></td>
     <td><textarea id="achados_txt" >${paciente.achados}</textarea></td>
+    <td><textarea id="diagnostico_final_txt">${"por hora nada"}</textarea></td>
     </tr>
     <div class="div_botao">
     <button id="b_editar">salvar edição</button>
@@ -177,6 +179,7 @@ function jogarDadosParaInputs(paciente){
             nome: html.get("#nome_paciente_txt").value,
             revisor: html.get("#responsavel_txt").value,
             achados: html.get("#achados_txt").value,
+            // diagnostico_final: html.get("#diagnostico_final_txt").value,
             id: paciente.Id,
         };
             fetchModificarPaciente(dados)

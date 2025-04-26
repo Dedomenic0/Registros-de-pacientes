@@ -36,7 +36,9 @@ html.get("#salvar").addEventListener("click", () => {
     html.get("#responsavel").value = "";
     html.get("#achados").value = "";
     tabela.innerHTML = "";
-    fetchData();
+    setTimeout(() => {
+        fetchData();
+    }, 100)
 })
 
 html.get("#achados").addEventListener("keydown", (e) => {
@@ -47,8 +49,9 @@ html.get("#achados").addEventListener("keydown", (e) => {
         html.get("#responsavel").value = "";
         html.get("#achados").value = "";
         tabela.innerHTML = "";
-        fetchData();
-    }
+        setTimeout(() => {
+            fetchData();
+        }, 100)   }
 })
 
 function deletarPaciente() {
@@ -147,6 +150,7 @@ function addDadosTabela(data) {
                 <td>${data.nome}</td>
                 <td>${data.revisor}</td>
                 <td>${data.achados}</td>
+                <td>${"nada por hora"}</td>
             `
         tabela.appendChild(tr)
 

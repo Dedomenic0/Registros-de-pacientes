@@ -15,7 +15,7 @@ import java.util.UUID;
 
 @Service
 public class ImagenService {
-    private String destino = System.getProperty("user.dir") + "/storage/";
+    private String destino = System.getProperty("user.dir") + "/src/main/resources/storage/";
     File pasta = new File(destino);
 
     @Autowired
@@ -36,7 +36,6 @@ public class ImagenService {
     }
 
     public Resource retornaImagem(Long id) throws IOException {
-
 
         Optional<Paciente> paciente = pacienteRepository.findById(id);
 

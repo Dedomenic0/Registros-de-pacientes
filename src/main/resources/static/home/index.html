@@ -21,7 +21,7 @@
             <label  for="responsavel">Medico responsavel:</label>
             <input class="cadastro_paciente_envio" type="text"  id="responsavel">
             <label for="achados">Achados em lâmina:</label>
-            <textarea class="cadastro_paciente_envio_text" name="" id="achados" id = "achados"></textarea>
+            <textarea class="cadastro_paciente_envio_text" name="" id="achados"></textarea>
             <input type="button" value="Salvar" id="salvar">
         </section>
         <section class="consulta_paciente">
@@ -36,11 +36,12 @@
                 <div class="tabela_paciente_container">
                     <table class="tabela_paciente">
                         <thead>
-                            <tr>
+                            <tr class="tabela_paciente_titulo">
                                 <th>Data</th>
                                 <th>Nome</th>
                                 <th>Responsavel</th>
                                 <th>Achados</th>
+                                <th>Diagnostico Final</th>
                             </tr>
                         </thead>
                         <tbody id="tabela"></tbody>

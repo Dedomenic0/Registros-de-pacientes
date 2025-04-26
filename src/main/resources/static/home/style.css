@@ -100,10 +100,16 @@ th, td {
     border: var(--cor--black) solid 1px;
     padding: 10px;
     font-size: 17px;
+    align-items: center;
+    text-align: center;
 }
 
 tr:hover {
     background-color: var(--cor--primaria);
+}
+
+.tabela_paciente_titulo:hover {
+    background-color: var(--azul--primaria);
 }
 
 .paginacao_container {
@@ -172,16 +178,24 @@ tr:hover {
 
 .selected {
     background-color: var(--azul--secundaria);
-    color: var(--cor--primaria);
 }
 
-#data_txt, #nome_paciente_txt, #responsavel_txt, #achados_txt {
-    padding: 1rem;
-    background-color: var(--cor--terciaria);
+#data_txt, #nome_paciente_txt, #responsavel_txt, #achados_txt, #diagnostico_final_txt {
+    background-color: var(--azul--secundaria);
     border: none;
-    align-items: start;
     text-align: center;
+    resize: none;
+    font-size: 18px;
+    display: flex;
+    margin: auto;
+}
 
+#editar_paciente_tabela {
+    background-color: var(--azul--secundaria);
+}
+
+#editar_paciente_tabela:hover {
+    background-color: var(--azul--secundaria);
 }
 
 .div_botao {
