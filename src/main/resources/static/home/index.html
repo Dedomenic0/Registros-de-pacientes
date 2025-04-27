@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Pacientes</title>
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="icon" href="./images/icon.png" type="image/x-icon">
 </head>
 <body>
     <header>
@@ -46,6 +46,7 @@
                         </thead>
                         <tbody id="tabela"></tbody>
                     </table>
+
                 </div>
                 <div class="paginacao_container">
                     <input class="consulta_paciente_botao_paginacao" type="button" value="<<" id="primeiro">
@@ -54,7 +55,10 @@
                     <input class="consulta_paciente_botao_paginacao" type="button" value=">" id="proximo">
                     <input class="consulta_paciente_botao_paginacao" type="button" value=">>" id="ultima">
                 </div>
-                <div class="add_novo_botao"></div>
+                <div class="add_novo_botao">
+                    <button id="editar">Editar</button>
+                    <button id="deletar">Deletar</button>
+                </div>
         </section>
         <div id="overlay"></div>
         <div id="popup">

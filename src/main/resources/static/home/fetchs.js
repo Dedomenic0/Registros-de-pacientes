@@ -26,12 +26,13 @@ async function fetchUmPaciente(nomePaciente) {
                     tr.setAttribute("id", data.Id)
                     const dia = data.data.split("-");
                     const diaFormatado = `${dia[2]}/${dia[1]}/${dia[0]}`
+                    const diagnostico = data.diagnosticoFinal || "N/A";
                     tr.innerHTML = `
                             <td>${diaFormatado}</td>
                             <td>${data.nome}</td>
                             <td>${data.revisor}</td>
                             <td>${data.achados}</td>
-                            <td>${"nada por hora"}</td>
+                            <td>${diagnostico}</td>
                         `
                     tabela.appendChild(tr)
                 })
@@ -130,6 +131,7 @@ async function fetchModificarPaciente(dados) {
                 nome: dados.nome,
                 revisor: dados.revisor,
                 achados: dados.achados,
+                diagnosticoFinal: dados.diagnosticoFinal,
             })
         })
             .then(response => response)
@@ -160,31 +162,30 @@ async function fetchUmPacienteEditar(id) {
 }
 
 function jogarDadosParaInputs(paciente){
+    const diagnostico = paciente.diagnosticoFinal || "N/A";
     html.get("#tabela").innerHTML = `<tr id="editar_paciente_tabela">
     <td><input type="date" id="data_txt" value="${paciente.data}" ></td>
     <td><textarea id="nome_paciente_txt" readonly>${paciente.nome}</textarea></td>
     <td><textarea id="responsavel_txt" >${paciente.revisor}</textarea></td>
     <td><textarea id="achados_txt" >${paciente.achados}</textarea></td>
-    <td><textarea id="diagnostico_final_txt">${"por hora nada"}</textarea></td>
+    <td><textarea id="diagnostico_final_txt">${diagnostico}</textarea></td>
     </tr>
     <div class="div_botao">
     <button id="b_editar">salvar edição</button>
     </div>
     `
-    html.get(".add_novo_botao").innerHTML = ""
-
     html.get("#b_editar").addEventListener("click", () => {
         const dados = {
             data: html.get("#data_txt").value,
             nome: html.get("#nome_paciente_txt").value,
             revisor: html.get("#responsavel_txt").value,
             achados: html.get("#achados_txt").value,
-            // diagnostico_final: html.get("#diagnostico_final_txt").value,
+            diagnosticoFinal: html.get("#diagnostico_final_txt").value,
             id: paciente.Id,
         };
             fetchModificarPaciente(dados)
             tabela.innerHTML = "";
-            fetchUmPaciente(dados.nome);
+            setTimeout(() => fetchUmPaciente(dados.nome), 100) ;
     })
 }
 

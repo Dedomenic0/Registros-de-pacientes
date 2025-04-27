@@ -24,6 +24,7 @@ public class Paciente {
     private String revisor;
     private String achados;
     private LocalDate deletado;
+    private String diagnosticoFinal;
     private String imagem;
 
     public void deletarPaciente() {
@@ -39,6 +40,7 @@ public class Paciente {
         this.nome = pacienteDto.nome();
         this.revisor = pacienteDto.revisor();
         this.achados = pacienteDto.achados();
+        this.diagnosticoFinal = pacienteDto.diagnosticoFinal();
     }
 
     public Paciente(PacienteDto paciente) {
@@ -46,6 +48,7 @@ public class Paciente {
         this.nome = paciente.nome();
         this.revisor = paciente.revisor();
         this.achados = paciente.achados();
+        this.diagnosticoFinal = paciente.diagnosticoFinal();
     }
     public void salvarImagem(String imagemCaminho) {
         this.imagem = imagemCaminho;

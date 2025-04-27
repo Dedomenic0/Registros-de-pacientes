@@ -1,0 +1,1 @@
+ALTER TABLE pacientes ADD COLUMN diagnostico_final varchar(255) DEFAULT NULL;

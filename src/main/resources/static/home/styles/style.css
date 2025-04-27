@@ -203,6 +203,7 @@ tr:hover {
     justify-content: end;
     align-items: end;
     flex-direction: row;
+    
 }
 
 #b_editar {
@@ -214,6 +215,8 @@ tr:hover {
     font-size: 16px;
     text-align: center;
     margin: 1rem;
+    position: relative;
+    left: 550%;
 }
 
 #salvar {

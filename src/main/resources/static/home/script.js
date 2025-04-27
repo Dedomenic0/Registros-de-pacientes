@@ -22,7 +22,6 @@ html.get("#pesquisa").addEventListener("keydown", (e) => {
         }
         tabela.innerHTML = "";
         fetchUmPaciente(html.get("#pesquisa").value);
-        addBotoes();
         deletarPaciente();
         editarPaciente();
         pegaLinhaSelecionada();
@@ -54,9 +53,8 @@ html.get("#achados").addEventListener("keydown", (e) => {
         }, 100)   }
 })
 
-function deletarPaciente() {
 
-    document.querySelector("#deletar").addEventListener("click", () => {
+document.querySelector("#deletar").addEventListener("click", () => {
         const pacienteSelecionado = html.get(".selected");
         if (pacienteSelecionado) {
             fetchDeletar(pacienteSelecionado.id);
@@ -65,11 +63,10 @@ function deletarPaciente() {
         } else {
             alert("Selecione um paciente para deletar.");
         }
-    })
-}
+})
 
-function editarPaciente() {
-    document.querySelector("#editar").addEventListener("click", async () => {
+
+document.querySelector("#editar").addEventListener("click", async () => {
         const pacienteSelecionado = html.get(".selected");
 
         if (pacienteSelecionado) {
@@ -78,8 +75,7 @@ function editarPaciente() {
         } else {
             alert("Selecione um paciente para editar.");
         }
-    })
-}
+})
 
 async function fetchData() {
     tabela.innerHTML = "";
@@ -144,19 +140,19 @@ function addDadosTabela(data) {
         tr.setAttribute("id", data.Id)
         const dia = data.data.split("-");
         const diaFormatado = `${dia[2]}/${dia[1]}/${dia[0]}`
+        const diagnostico = data.diagnosticoFinal || "N/A";
 
         tr.innerHTML = `
                 <td>${diaFormatado}</td>
                 <td>${data.nome}</td>
                 <td>${data.revisor}</td>
                 <td>${data.achados}</td>
-                <td>${"nada por hora"}</td>
+                <td>${diagnostico}</td>
             `
         tabela.appendChild(tr)
 
     })
-    const div = html.get(".add_novo_botao");
-    div.innerHTML = "";
+    
 }
 
 function createListeners() {
@@ -209,19 +205,6 @@ function salvarImagem() {
             alert("Selecione um paciente para salvar a imagem.");
         }
     })
-}
-
-function addBotoes() {
-    const div = html.get(".add_novo_botao");
-    div.innerHTML = "";
-    const deletar = document.createElement("button");
-    const editar = document.createElement("button");
-    deletar.innerHTML = "Deletar";
-    deletar.id = "deletar";
-    editar.innerHTML = "Editar";
-    editar.id = "editar";
-    div.appendChild(deletar);
-    div.appendChild(editar);
 }
 
 function pegaLinhaSelecionada() {

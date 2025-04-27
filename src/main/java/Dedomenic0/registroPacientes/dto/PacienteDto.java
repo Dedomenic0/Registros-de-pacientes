@@ -10,10 +10,11 @@ public record PacienteDto(
         LocalDate data,
         String nome,
         String revisor,
-        String achados
+        String achados,
+        String diagnosticoFinal
 ) {
     public PacienteDto (Paciente paciente){
         this(paciente.getId(),paciente.getData(), paciente.getNome(),
-                paciente.getRevisor(), paciente.getAchados());
+                paciente.getRevisor(), paciente.getAchados(), paciente.getDiagnosticoFinal());
     }
 }
