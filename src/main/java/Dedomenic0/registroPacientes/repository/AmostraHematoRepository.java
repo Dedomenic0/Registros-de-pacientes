@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,5 +17,5 @@ public interface AmostraHematoRepository extends JpaRepository<AmostraHemato, In
     List<AmostraHematoDto> findAllByDataBetween(LocalDate dataAfter, LocalDate dataBefore);
 
     @Query(value = "SELECT count(a) FROM AmostraHemato a where a.data between :dataInicio AND :dataFim AND a.localColeta = :local and a.motivo = :motivo")
-    Optional<Integer> amostrasPorMes(LocalDate dataInicio, LocalDate dataFim, String local, Motivo motivo);
+    Optional<Integer> amostrasPorMes(Date dataInicio, Date dataFim, String local, Motivo motivo);
 }

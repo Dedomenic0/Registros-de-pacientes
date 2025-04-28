@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/amostras")
@@ -26,7 +27,7 @@ public class AmostrasController {
     }
 
     @PostMapping("/contagem")
-    public ResponseEntity<String> contagem(@RequestBody LocalDate dataInicio, @RequestBody LocalDate dataFim) {
+    public ResponseEntity<String> contagem(@RequestBody Date dataInicio, Date dataFim) {
         amostraHematoService.contagem(dataInicio, dataFim);
         return ResponseEntity.ok().build();
     }

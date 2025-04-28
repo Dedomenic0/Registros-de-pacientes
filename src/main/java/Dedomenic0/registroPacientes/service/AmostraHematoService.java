@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,7 +32,7 @@ public class AmostraHematoService {
         return repository.findAllByDataBetween(dataInicio, dataFim);
     }
 
-    public void contagem (LocalDate dataInicio, LocalDate dataFim) {
+    public void contagem (Date dataInicio, Date dataFim) {
         List<String> locaisColeta = localColetaRepository.findAll().stream()
                     .map(LocalColeta::getLocal).toList();
         List<String> resultadoFinal = new ArrayList<>();
