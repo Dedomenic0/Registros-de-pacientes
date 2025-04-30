@@ -1,10 +1,13 @@
 package Dedomenic0.registroPacientes.service;
 
 import Dedomenic0.registroPacientes.domain.AmostraHemato;
+import Dedomenic0.registroPacientes.domain.AmostraHemostasia;
 import Dedomenic0.registroPacientes.domain.LocalColeta;
 import Dedomenic0.registroPacientes.domain.Motivo;
 import Dedomenic0.registroPacientes.dto.AmostraHematoDto;
+import Dedomenic0.registroPacientes.dto.AmostraHemostasiaDto;
 import Dedomenic0.registroPacientes.repository.AmostraHematoRepository;
+import Dedomenic0.registroPacientes.repository.AmostraHemostasiaRepository;
 import Dedomenic0.registroPacientes.repository.LocalColetaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,26 +20,25 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AmostraHematoService {
-
+public class AmostraHemostasiaService {
     @Autowired
-    private AmostraHematoRepository repository;
+    private AmostraHemostasiaRepository repository;
 
     @Autowired
     private LocalColetaRepository localColetaRepository;
 
     ArquivoService arquivoService = new ArquivoService();
 
-    public void salvaAmostra(AmostraHemato amostra) {
-        repository.save(new AmostraHemato(amostra));
+    public void salvaAmostra(AmostraHemostasia amostra) {
+        repository.save(new AmostraHemostasia(amostra));
     }
 
     public void listaAmostraDoMes(LocalDate dataInicio, LocalDate dataFim) {
-        List<AmostraHematoDto> amostras =  repository.findAllByDataBetween(dataInicio, dataFim);
+        List<AmostraHemostasiaDto> amostras =  repository.findAllByDataBetween(dataInicio, dataFim);
         List<String> amostraString = new ArrayList<>(amostras.stream().map(a ->
                 a.data().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "," + a.codigoAmostra() + "," + a.localColeta() + "," + a.motivo()).toList());
         try {
-            arquivoService.gravaExel(amostraString, "amostrasHematoMes_" + dataInicio.getMonthValue());
+            arquivoService.gravaExel(amostraString, "amostrasHemostasiaMes_" + dataInicio.getMonthValue());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -59,7 +61,7 @@ public class AmostraHematoService {
             }
         }
         try {
-        arquivoService.gravaExel(resultadoFinal, "resultadoHemotoMes_" + dataInicio.getMonthValue());
+            arquivoService.gravaExel(resultadoFinal, "resultadoHemostasiaMes_" + dataInicio.getMonthValue());
         } catch (IOException e) {
             throw new RuntimeException("Erro ao gravar arquivo");
         }

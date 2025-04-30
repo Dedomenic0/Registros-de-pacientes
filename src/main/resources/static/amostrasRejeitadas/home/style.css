@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+body {
+    box-sizing: border-box;
+    background-image: url(./imag/hemácias.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: grid;
+    font-family: "Lato", sans-serif;
+}
+h1{
+    font-size: 50px;
+    color: rgb(0, 0, 0);
+}
+
+.envio__de__amostra {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fdfdfd1a;
+}
+
+.formulario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #57b3ba46;
+    padding: 20px;
+    border-radius: 20px;
+    color: #000000;
+}
+
+.contagem__final {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 300px;
+    background-color: #fdfbee67;
+    padding: 10px;
+    border-radius: 20px;
+}
+a{
+    text-decoration: none;
+    color: #000000;
+}
+.novo__local {
+    justify-content: bottom;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+    border-radius: 5px;
+    padding: 3px;
+    background-color: rgb(255, 253, 253);
+    font-size: 17px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 700;
+}
+.novo__local:hover{
+    background-color: #faee9d;
+}
+ 
+.autor {
+    color: rgb(152, 152, 153);
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 20px;
+    align-content: end;
+}
+
+#texto, #Coleta, #motivo{
+
+    margin: auto;
+    border: 2px solid rgb(2, 2, 2);
+    border-radius: 8px;
+    background-color: #fa62442f;
+    width: 250px;
+    font-size: 18px;
+    text-align: center;
+    resize: none;
+    height: 40px;;
+    color: #000;
+}
+
+
+#texto::placeholder, #Coleta::placeholder, #motivo::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+
+}
+
+
+#texto:hover, #Coleta:hover, #motivo:hover, #setor:hover {
+    border: 2px solid #03c9bf;
+}
+
+.salvar__formulario {
+    margin: auto;
+    background-color: #73EC8B;
+    border: 2px solid #73EC8B;
+    width: 250px;
+    font-size: 20px;
+    text-align: center;
+    resize: none;
+    height: 40px;
+    border-radius: 8px;
+}
+
+.salvar__formulario:hover {
+    border: #312e2d solid 2px;
+}
+
+#setor {
+    margin: auto;
+    background-color: #57B4BA;
+    width: 250px;
+    font-size: 20px;
+    text-align: center;
+    resize: none;
+    height: 40px;
+    border-radius: 8px;
+    border: 2px solid rgb(2, 2, 2);
+    color: #000000;
+}
+
+#data, #enviar {
+    margin: auto;
+    background-color: #57B4BA;
+    width: 150px;
+    font-size: 15px;
+    text-align: center;
+    resize: none;
+    height: 25px;
+    border-radius: 8px;
+    border: 1px solid rgb(2, 2, 2);
+}
+
+#enviar {
+    background-color: #73EC8B;
+    border: #73EC8B;
+}
+
+#enviar:hover {
+    border: #312e2d solid 2px;
+}
+#data:hover {
+    border: #312e2d solid 2px;
+}
+
+#setor:focus, #motivo:focus {
+    color: #000000;
+}

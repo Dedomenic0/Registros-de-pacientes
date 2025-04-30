@@ -1,6 +1,5 @@
 package Dedomenic0.registroPacientes.domain;
 
-import Dedomenic0.registroPacientes.dto.AmostraHematoDto;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,11 +19,10 @@ public class AmostraHemato {
     private Long id;
     private String codigoAmostra;
     private LocalDate data;
+    private String localColeta;
 
     @Enumerated(EnumType.STRING)
     private Motivo motivo;
-
-    private String localColeta;
 
     public AmostraHemato(AmostraHemato amostra) {
         this.data = LocalDate.now();

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+
 @Entity
 @Table(name = "amostras_hemostasia")
 @Getter
@@ -19,6 +20,14 @@ public class AmostraHemostasia {
     private String codigoAmostra;
     private LocalDate data;
     private String localColeta;
-    private String motivo;
 
+    @Enumerated(EnumType.STRING)
+    private Motivo motivo;
+
+    public AmostraHemostasia(AmostraHemostasia amostra) {
+        this.data = LocalDate.now();
+        this.codigoAmostra = amostra.codigoAmostra;
+        this.localColeta = amostra.localColeta;
+        this.motivo = amostra.motivo;
+    }
 }

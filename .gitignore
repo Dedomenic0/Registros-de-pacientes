@@ -5,6 +5,7 @@ target/
 !**/src/test/**/target/
 !**/src/main/resources/storage/
 storage/
+files/
 
 ### STS ###
 .apt_generated
