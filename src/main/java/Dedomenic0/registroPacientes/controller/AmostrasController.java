@@ -5,12 +5,12 @@ import Dedomenic0.registroPacientes.domain.AmostraHemostasia;
 import Dedomenic0.registroPacientes.service.AmostraHematoService;
 import Dedomenic0.registroPacientes.service.AmostraHemostasiaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
@@ -23,6 +23,20 @@ public class AmostrasController {
 
     @Autowired
     private AmostraHemostasiaService amostraHemostasiaService;
+
+    @GetMapping("/hemato")
+    public ResponseEntity<Page<AmostraHemato>> listaAmostrasHemato(@PageableDefault(size = 10, sort = "data") Pageable pageable) {
+        Page<AmostraHemato> amostrasHemato = amostraHematoService.pegaAmostras(pageable);
+
+        return ResponseEntity.ok().body(amostrasHemato);
+    }
+
+    @GetMapping("/hemostasia")
+    public ResponseEntity<Page<AmostraHemostasia>> listaAmostrasHemosta(@PageableDefault(size = 10, sort = "data") Pageable pageable) {
+        Page<AmostraHemostasia> amostrasHemostasia = amostraHemostasiaService.pegaAmostras(pageable);
+
+        return ResponseEntity.ok().body(amostrasHemostasia);
+    }
 
     @Transactional
     @PostMapping("/hemato")
