@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-public interface AmostraHemostasiaRepository extends JpaRepository<AmostraHemostasia, Integer> {
+public interface AmostraHemostasiaRepository extends JpaRepository<AmostraHemostasia, Long> {
 
     List<AmostraHemostasiaDto> findAllByDataBetween(LocalDate dataAfter, LocalDate dataBefore);
 

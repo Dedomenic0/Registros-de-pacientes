@@ -73,4 +73,8 @@ public class AmostraHematoService {
     public Page<AmostraHemato> pegaAmostras (Pageable pageable) {
         return repository.findAll(pageable);
     }
+
+    public void deletaAmostra(Long id) {
+        repository.deleteById(id);
+    }
 }

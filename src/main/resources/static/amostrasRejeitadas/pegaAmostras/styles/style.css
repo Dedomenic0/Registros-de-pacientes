@@ -1,0 +1,12 @@
+@import url("reset.css");
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+:root {
+    --fonte: "lato";
+}
+
+body {
+    box-sizing: border-box;
+    height: 100vh;
+    font-family: var(--fonte), sans-serif;
+}
