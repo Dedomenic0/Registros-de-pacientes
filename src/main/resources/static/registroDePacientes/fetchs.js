@@ -1,3 +1,5 @@
+import erro from "./popupErros.js";
+
 const route = "http://localhost:8080";
 
 const html = {
@@ -19,7 +21,7 @@ async function fetchUmPaciente(nomePaciente) {
             .then(response => response.json())
             .then(data => {
                 if(data.length == 0) {
-                    alert("Nenhum paciente encontrado")
+                    erro("Nenhum paciente encontrado")
                 }
                 data.forEach(data => {
                     const tr = document.createElement("tr");
@@ -48,7 +50,7 @@ async function fetchUmPaciente(nomePaciente) {
 async function fetchSalvar({dados}) {
 
     if(dados.data == "" || dados.nome == "" || dados.revisor == "" || dados.achados == "") {
-        alert("Preencha todos os campos")
+        erro("Preencha todos os campos")
         return;
     }
 
@@ -78,7 +80,7 @@ async function fetchSalvar({dados}) {
 
 async function fetchSalvarImagem({dados}) {
     if(dados.imagem == null) {
-        alert("Selecione uma imagem");
+        erro("Selecione uma imagem");
         return;
     }
     const formData = new FormData();

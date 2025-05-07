@@ -2,6 +2,8 @@ package Dedomenic0.registroPacientes.controller;
 
 import Dedomenic0.registroPacientes.domain.AmostraHemato;
 import Dedomenic0.registroPacientes.domain.AmostraHemostasia;
+import Dedomenic0.registroPacientes.dto.AmostraHematoDto;
+import Dedomenic0.registroPacientes.dto.AmostraHemostasiaDto;
 import Dedomenic0.registroPacientes.service.AmostraHematoService;
 import Dedomenic0.registroPacientes.service.AmostraHemostasiaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @RequestMapping("/amostras")
@@ -26,15 +29,15 @@ public class AmostrasController {
     private AmostraHemostasiaService amostraHemostasiaService;
 
     @GetMapping("/hemato")
-    public ResponseEntity<Page<AmostraHemato>> listaAmostrasHemato(@PageableDefault(size = 10, sort = "data", direction = Sort.Direction.DESC) Pageable pageable) {
-        Page<AmostraHemato> amostrasHemato = amostraHematoService.pegaAmostras(pageable);
+    public ResponseEntity<List<AmostraHematoDto>> listaAmostrasHemato(@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        List<AmostraHematoDto> amostrasHemato = amostraHematoService.pegaAmostras(pageable);
 
         return ResponseEntity.ok().body(amostrasHemato);
     }
 
     @GetMapping("/hemostasia")
-    public ResponseEntity<Page<AmostraHemostasia>> listaAmostrasHemosta(@PageableDefault(size = 10, sort = "data", direction = Sort.Direction.DESC) Pageable pageable) {
-        Page<AmostraHemostasia> amostrasHemostasia = amostraHemostasiaService.pegaAmostras(pageable);
+    public ResponseEntity<List<AmostraHemostasiaDto>> listaAmostrasHemosta(@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        List<AmostraHemostasiaDto> amostrasHemostasia = amostraHemostasiaService.pegaAmostras(pageable);
 
         return ResponseEntity.ok().body(amostrasHemostasia);
     }

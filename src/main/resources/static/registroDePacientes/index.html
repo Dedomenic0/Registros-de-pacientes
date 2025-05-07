@@ -24,11 +24,20 @@
             <textarea class="cadastro_paciente_envio_text" name="" id="achados"></textarea>
             <input type="button" value="Salvar" id="salvar">
         </section>
+
+        <div class="popup-erros">
+            <p class="popup_nome-erro">ERRO</p>
+        </div>
+
         <section class="consulta_paciente">
             <div class="consulta_paciente_container">
                 <h2>PESQUISA</h2>
                 <input id="pesquisa" type="text" placeholder="Nome para pesquisa">
                 <div class="imagem_container">
+                    <div class="imagem_container-seletor">
+                        <button class="selecionar_imagem_input">Selecionar uma imagem</button>
+                        <p id="nome_arquivo">Selecione uma imagem</p>
+                    </div>
                     <input class="enviar_imagem" type="file" id="imagem" accept="image/*">
                     <input class="salvar_imagem_paciente" type="submit" value="Enviar Imagem" id="salvar_imagem">
                 </div>

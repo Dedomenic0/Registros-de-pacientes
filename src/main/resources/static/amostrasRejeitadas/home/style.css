@@ -117,7 +117,7 @@ a{
     border-radius: 8px;
 }
 
-.salvar__formulario:hover {
+.salvar__formulario:hover, .submit:hover {
     border: #312e2d solid 2px;
 }
 
@@ -160,4 +160,38 @@ a{
 
 #setor:focus, #motivo:focus {
     color: #000000;
+}
+
+.hidden {
+    display: none;
+}
+
+.add-novo-local {
+    background-color: #b1afaf9d;
+    padding: 0.3em;
+    border-radius: 5px;
+}
+
+.add-novo-local--form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+}
+
+.novoLocal {
+    border: black solid 1px;
+    font-size: 18px;
+    border-radius: 8px;
+    background-color: #fa62442f;
+    text-align: center;
+    color: #000;
+}
+
+.submit {
+    background-color: #73EC8B;
+    border: 2px solid #73EC8B;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 8px;
 }

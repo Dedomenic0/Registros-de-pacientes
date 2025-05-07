@@ -72,8 +72,12 @@ public class AmostraHemostasiaService {
         locaisColeta.clear();
     }
 
-    public Page<AmostraHemostasia> pegaAmostras (Pageable pageable) {
-        return repository.findAll(pageable);
+    public List<AmostraHemostasiaDto> pegaAmostras (Pageable pageable) {
+        var amostras = repository.findAll(pageable);
+        List<AmostraHemostasiaDto> listaAmostras = amostras.stream()
+                .map(a -> new AmostraHemostasiaDto(a.getId(), a.getData(), a.getCodigoAmostra(), a.getLocalColeta(), a.getMotivo().getDescricao()))
+                .toList();
+        return listaAmostras;
     }
 
     public void deletaAmostra(Long id) {

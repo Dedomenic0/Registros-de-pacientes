@@ -266,19 +266,34 @@ tr:hover {
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    gap: 2rem;
     text-align: center;
-    padding-left: 10%;
+    gap: 20px  ;
 }
 
 .enviar_imagem{
-    padding: 3px;
+    display: none;
+}
+
+.imagem_container-seletor {
+    display: flex;
+    gap: 20px;
+    text-align: center;
+}
+
+#nome_arquivo {
+    font-size: 18px;
+    width: 24em;
+    transform: translateY(25%);
+}
+
+.selecionar_imagem_input {
+    padding: 0.6rem;
     border: var(--cor--black) solid 2px;
     border-radius: 10px;
     font-size: 16px;
-    color: rgb(0, 0, 0);
+    color: white;
     font-weight: 600;
-    background-color: var(--cor--primaria);
+    background-color: var(--azul--botoe);
     cursor: pointer;
 }
 
@@ -305,11 +320,13 @@ tr:hover {
     z-index: 1000;
     border-radius: 2%;
   }
+
   #popup img {
     max-width: 100%;
     max-height: 80vh;
     border-radius: 2%;
   }
+
   #overlay {
     display: none;
     position: fixed;
@@ -334,4 +351,20 @@ tr:hover {
     display: flex;
     margin-bottom: 1rem;
     border: var(--cor--black) solid 2px;
+  }
+
+  .popup-erros {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(3, 4, 59, 0.836);
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
+    padding: 1em;
+    border-radius: 2%;
+    color: var(--cor--primaria);
+    font-weight: 700;
+    font-size: 22px;
+    font-style: italic;
   }

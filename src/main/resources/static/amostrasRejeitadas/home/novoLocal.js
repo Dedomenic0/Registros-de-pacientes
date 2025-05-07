@@ -1,15 +1,25 @@
-const link = "http://localhost:8080";
+const rota = "http://localhost:8080";
+
+const divBotao = document.querySelector(".novo__local");
+const divNovoLocal = document.querySelector(".add-novo-local");
+const addLocal = document.getElementById("submit");
+
+addLocal.addEventListener("click", (e) => {
+    e.preventDefault();
+    novoLocal();
+})
+
+divBotao.addEventListener("click", () =>{
+    divNovoLocal.classList.toggle("hidden");
+})
 
 async function novoLocal() {
     let local = document.getElementById("novoLocal").value;
+    if (!local) return;
 
     try {
-        await fetch(`${link}/localColeta`,{
+        await fetch(`${rota}/localColeta`,{
                 method: "POST",
-                mode: "cors",
-                headers:{
-                    "Content-Type":"application/json",
-                },
                 body: JSON.stringify({
                     local : local
                 })
@@ -18,6 +28,8 @@ async function novoLocal() {
             .then(response => {
                 if(response.status == 200) {
                 alert("Local de coleta adicionado com sucesso! \nAtualize a pagina principal");
+                local.value = '';
+                divNovoLocal.classList.toggle("hidden");
                 }
             })
             
@@ -25,5 +37,4 @@ async function novoLocal() {
         console.error(err);
         alert("Falha ao conectar com o servidor!");
     }
-    local = document.getElementById("novoLocal").value = '';
 }

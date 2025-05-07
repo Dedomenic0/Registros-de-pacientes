@@ -2,7 +2,6 @@ const link = "http://localhost:8080";
 pegaLocais()
 
 
-
 //envia os inputs recebidos para o link pelo metodo post
 async function salvarTexto() {
     const texto = document.getElementById("texto").value;

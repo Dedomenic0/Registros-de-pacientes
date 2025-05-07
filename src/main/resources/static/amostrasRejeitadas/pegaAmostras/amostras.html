@@ -8,16 +8,16 @@
 </head>
 <body>
     <div class="container__deletar">
-        <input class="container__deletar_id" type="number" placeholder="Identificador da amostra">
-        <button id="deletar-hemato" class="botao__deletar">Deleta hematologia</button>
-        <button id="deletar-hemostasia" class="botao__deletar">Deleta hemostasia</button>
+        <form>
+            <input class="container__deletar_id" type="number" placeholder="Identificador da amostra">
+            <button id="deletar-hemato" class="botao__deletar">Deletar Hematologia</button>
+            <button id="deletar-hemostasia" class="botao__deletar">Deletar Hemostasia</button>
+        </form>
     </div>
     <div class="container__tabela">
+        <p class="tabela__setor-titulo">Hematologia</p>
         <table class="tabela__amostras">
             <thead>
-                <tr>
-                    <th>Hematologia</th>
-                </tr>
                 <tr>
                     <th>Identificador</th>
                     <th>Data</th>
@@ -29,11 +29,9 @@
             <tbody class="resposta__tabela__amostras-hemato">
             </tbody>
         </table>
+        <p class="tabela__setor-titulo">Hemostasia</p>
         <table class="tabela__amostras">
             <thead>
-                <tr>
-                    <th>Hemostasia</th>
-                </tr>
                 <tr>
                     <th>Identificador</th>
                     <th>Data</th>

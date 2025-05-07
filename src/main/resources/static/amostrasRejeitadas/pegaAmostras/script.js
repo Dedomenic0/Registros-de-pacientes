@@ -18,7 +18,9 @@ async function pegaAmostras(url) {
          })
          .then(response => response.json())
          .then(data => {
-            data.content.forEach(d => {
+            console.log(data);
+            
+            data.forEach(d => {
                 criaTags(d, url);
             })
          })
@@ -36,8 +38,11 @@ function criaTags (dados, url) {
     const colunaLocal = document.createElement("td");
     const colunaMotivo = document.createElement("td");
 
+    const dia = dados.data.split("-");
+    const diaFormatado = `${dia[2]}/${dia[1]}/${dia[0]}`
+
     colunaId.textContent = dados.id;
-    colunaData.textContent = dados.data;
+    colunaData.textContent = diaFormatado;
     colunaCodigo.textContent = dados.codigoAmostra;
     colunaLocal.textContent = dados.localColeta;
     colunaMotivo.textContent = dados.motivo;
@@ -66,8 +71,11 @@ async function deletaAmostra(url, id) {
         await fetch (`http://localhost:8080/amostras/${url}/${id}`, {
              method: "DELETE"
          })
-         .then(response => 
-            console.log(response.status))
+         .then(response => {
+            if (response.status !== 200) {
+                alert("Erro ao deletar amostra!")
+            }
+         })
          
     } catch(e) {
         console.log(e);

@@ -1,4 +1,5 @@
 import {fetchPegarImagem, fetchUmPaciente, fetchSalvar, fetchDeletar, fetchUmPacienteEditar, fetchSalvarImagem } from "./fetchs.js";
+import erro from "./popupErros.js";
 
 const route = "http://localhost:8080";
 const html = {
@@ -61,7 +62,7 @@ document.querySelector("#deletar").addEventListener("click", () => {
             tabela.innerHTML = "";
             fetchData();
         } else {
-            alert("Selecione um paciente para deletar.");
+            erro("Selecione um paciente para deletar.");
         }
 })
 
@@ -73,7 +74,7 @@ document.querySelector("#editar").addEventListener("click", async () => {
             fetchUmPacienteEditar(pacienteSelecionado.id);
 
         } else {
-            alert("Selecione um paciente para editar.");
+            erro("Selecione um paciente para editar.");
         }
 })
 
@@ -191,6 +192,19 @@ function salvarDados() {
     fetchSalvar({ dados });
 }
 
+html.get(".selecionar_imagem_input").addEventListener("click", () => {
+    html.get(".enviar_imagem").click();
+
+    html.get(".enviar_imagem").addEventListener("change", ()=> {
+        const nomeImagem = html.get(".enviar_imagem").value.split("\\");
+        let nomeArquivoReal = nomeImagem[nomeImagem.length - 1];
+        if (nomeImagem == "") {
+            nomeArquivoReal = "Selecione uma imagem";
+        }
+        html.get("#nome_arquivo").innerHTML = nomeArquivoReal;
+    })
+})
+
 function salvarImagem() {
     html.get(".salvar_imagem_paciente").addEventListener("click", () => {
         const pacienteSelecionado = html.get(".selected");
@@ -200,9 +214,9 @@ function salvarImagem() {
                 imagem: html.get(".enviar_imagem").files[0],
             };
             fetchSalvarImagem({ dados });
-            html.get(".enviar_imagem").value = "";
+            html.get(".enviar_imagem").value = "Selecione uma imagem";
         } else {
-            alert("Selecione um paciente para salvar a imagem.");
+            erro("Selecione um paciente para salvar a imagem.");
         }
     })
 }

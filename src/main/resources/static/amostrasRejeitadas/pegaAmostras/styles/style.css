@@ -3,10 +3,88 @@
 
 :root {
     --fonte: "lato";
+    --background-color: linear-gradient(180deg, #cc5454be 0%, #320404b7 48.44%, #020d16e3 100%);
+    --background-color-tabela: #ffffffb9;
+    --black-color: #000000;
+    --primery-color: linear-gradient(180deg, #df3131be 0%, #320404b7 48.44%, #020d16e3 100%);
+    --secundary-color: #ff000046;
+    --tertiary-color: #464646;
+    --button-color: #ec7373;
 }
 
 body {
+    background-image: url(../../home/imag/hemácias.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
     height: 100vh;
+    width: 100vw;
     font-family: var(--fonte), sans-serif;
+    align-items: center;
+    padding: 1em;
+}
+
+.container__tabela {
+    background-color: var(--background-color-tabela);
+    padding: 1em;
+}
+
+.tabela__amostras {
+    display: flexbox;
+    width: 80vw;
+    text-align: center;
+    margin: 1em 0;
+    border: var(--black-color) solid 1px;
+}
+
+thead {
+    background: var(--primery-color);
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+td, th {
+    padding: 0.3em;
+    border: var(--black-color) solid 1px;
+}
+
+tbody tr:hover {
+    background-color: var(--secundary-color) ;
+}
+
+.container__deletar {
+    display: flex;
+    background-color: var(--tertiary-color);
+    width: 80vw;
+    padding: 1em;
+    justify-content: center;
+    text-align: center;
+}
+
+p {
+    border-top: var(--black-color) solid 2px;
+    padding: 0.5em;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.container__deletar_id {
+    background-color: #ffffff;
+    border: none;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.botao__deletar {
+    background-color: var(--button-color);
+    border: none;
+    padding: 5px;
+    border-radius: 8px;
+    margin: 0 0.5em;
+    font-size: 16px;
 }
