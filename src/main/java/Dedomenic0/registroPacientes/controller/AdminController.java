@@ -2,8 +2,6 @@ package Dedomenic0.registroPacientes.controller;
 
 import Dedomenic0.registroPacientes.domain.Paciente;
 import Dedomenic0.registroPacientes.service.AdminService;
-
-
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -20,16 +20,19 @@ async function novoLocal() {
     try {
         await fetch(`${rota}/localColeta`,{
                 method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
                 body: JSON.stringify({
-                    local : local
+                    local: local
                 })
             }
         )
             .then(response => {
-                if(response.status == 200) {
-                alert("Local de coleta adicionado com sucesso! \nAtualize a pagina principal");
-                local.value = '';
-                divNovoLocal.classList.toggle("hidden");
+                if(response.status === 200) {
+                    document.getElementById("novoLocal").value = "";
+                    alert("Local de coleta adicionado com sucesso! \nAtualize a pagina principal");
+                    divNovoLocal.classList.toggle("hidden");
                 }
             })
             

@@ -7,10 +7,9 @@ import Dedomenic0.registroPacientes.dto.AmostraHematoDto;
 import Dedomenic0.registroPacientes.repository.AmostraHematoRepository;
 import Dedomenic0.registroPacientes.repository.LocalColetaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import org.springframework.data.domain.Pageable;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -34,11 +33,11 @@ public class AmostraHematoService {
     }
 
     public void listaAmostraDoMes(LocalDate dataInicio, LocalDate dataFim) {
-        List<AmostraHematoDto> amostras =  repository.findAllByDataBetween(dataInicio, dataFim);
+        List<AmostraHemato> amostras =  repository.findAllByDataBetween(dataInicio, dataFim);
         List<String> amostraString = new ArrayList<>(amostras.stream().map(a ->
-                a.data().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "," + a.codigoAmostra() + "," + a.localColeta() + "," + a.motivo()).toList());
+                a.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "," + a.getCodigoAmostra() + "," + a.getLocalColeta() + "," + a.getMotivo().getDescricao()).toList());
         try {
-            arquivoService.gravaExel(amostraString, "amostrasHematoMes_" + dataInicio.getMonthValue());
+            arquivoService.gravaExel(amostraString, "amostrasHematoMes_" + dataInicio.getMonthValue() + "-" + dataInicio.getYear());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -61,7 +60,7 @@ public class AmostraHematoService {
             }
         }
         try {
-        arquivoService.gravaExel(resultadoFinal, "resultadoHemotoMes_" + dataInicio.getMonthValue());
+        arquivoService.gravaExel(resultadoFinal, "resultadoHemotoMes_" + dataInicio.getMonthValue() + "-" + dataInicio.getYear());
         } catch (IOException e) {
             throw new RuntimeException("Erro ao gravar arquivo");
         }
@@ -74,7 +73,7 @@ public class AmostraHematoService {
         var amostras = repository.findAll(pageable);
         List<AmostraHematoDto> listaAmostras = amostras.stream()
                 .map(a -> new AmostraHematoDto(a.getId(), a.getData(), a.getCodigoAmostra(), a.getLocalColeta(), a.getMotivo().getDescricao()))
-                .toList();
+                    .toList();
         return listaAmostras;
     }
 

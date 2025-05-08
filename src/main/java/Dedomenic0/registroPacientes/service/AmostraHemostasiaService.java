@@ -1,19 +1,15 @@
 package Dedomenic0.registroPacientes.service;
 
-import Dedomenic0.registroPacientes.domain.AmostraHemato;
 import Dedomenic0.registroPacientes.domain.AmostraHemostasia;
 import Dedomenic0.registroPacientes.domain.LocalColeta;
 import Dedomenic0.registroPacientes.domain.Motivo;
-import Dedomenic0.registroPacientes.dto.AmostraHematoDto;
 import Dedomenic0.registroPacientes.dto.AmostraHemostasiaDto;
-import Dedomenic0.registroPacientes.repository.AmostraHematoRepository;
 import Dedomenic0.registroPacientes.repository.AmostraHemostasiaRepository;
 import Dedomenic0.registroPacientes.repository.LocalColetaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import org.springframework.data.domain.Pageable;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -36,11 +32,11 @@ public class AmostraHemostasiaService {
     }
 
     public void listaAmostraDoMes(LocalDate dataInicio, LocalDate dataFim) {
-        List<AmostraHemostasiaDto> amostras =  repository.findAllByDataBetween(dataInicio, dataFim);
+        List<AmostraHemostasia> amostras =  repository.findAllByDataBetween(dataInicio, dataFim);
         List<String> amostraString = new ArrayList<>(amostras.stream().map(a ->
-                a.data().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "," + a.codigoAmostra() + "," + a.localColeta() + "," + a.motivo()).toList());
+                a.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "," + a.getCodigoAmostra() + "," + a.getLocalColeta() + "," + a.getMotivo().getDescricao()).toList());
         try {
-            arquivoService.gravaExel(amostraString, "amostrasHemostasiaMes_" + dataInicio.getMonthValue());
+            arquivoService.gravaExel(amostraString, "amostrasHemostasiaMes_" + dataInicio.getMonthValue() + "-" + dataInicio.getYear());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -63,7 +59,7 @@ public class AmostraHemostasiaService {
             }
         }
         try {
-            arquivoService.gravaExel(resultadoFinal, "resultadoHemostasiaMes_" + dataInicio.getMonthValue());
+            arquivoService.gravaExel(resultadoFinal, "resultadoHemostasiaMes_" + dataInicio.getMonthValue() + "-" + dataInicio.getYear());
         } catch (IOException e) {
             throw new RuntimeException("Erro ao gravar arquivo");
         }
