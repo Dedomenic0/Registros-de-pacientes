@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url("./listaLinks.css");
 
 body {
     box-sizing: border-box;
-    background-image: url(./imag/hemácias.png);
+    background-image: url(../imag/hemácias.png);
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;

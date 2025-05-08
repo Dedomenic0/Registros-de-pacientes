@@ -17,32 +17,44 @@
             width: 60vh;
             text-align: center;
             font-weight: 500;
+            border: 1px solid black;
+        }
+        th, td {
+            border: 1px solid black;
         }
         
+        div {
+            background-color: rgba(240, 248, 255, 0.575);
+            padding: 1em;
+            border-radius: 8px;
+        }
     </style>
+    <link rel="icon" href="../images/adm-icon.png" type="image/x-icon">
 </head>
 <body>
-    <form action="">
-        <label for="id_paciente">Identificador: </label>
-        <input type="number" id="id_paciente"  required>
-        <input type="submit" id="reverter" value="Reverter">
-        <input type="submit" id="deletar" value="Deletar">
-    </form>
-    <main>
-        <h1>Pacientes</h1>
-        <table>
-            <thead>
-                <tr style="background-color: rgb(255, 255, 255);">
-                    <th>Identificador</th>
-                    <th>Nome</th>
-                    <th>Deletado em</th>
-                </tr>
-            </thead>
-            <tbody id="pacientes">
-            </tbody>
-        </table>
-        <div id="caixa_alerta"></div>
-    </main>
+    <div>
+        <form action="">
+            <label for="id_paciente">Identificador: </label>
+            <input type="number" id="id_paciente"  required>
+            <input type="submit" id="reverter" value="Reverter">
+            <input type="submit" id="deletar" value="Deletar">
+        </form>
+        <main>
+            <h1>Pacientes</h1>
+            <table>
+                <thead>
+                    <tr style="background-color: rgb(255, 255, 255);">
+                        <th>Identificador</th>
+                        <th>Nome</th>
+                        <th>Deletado em</th>
+                    </tr>
+                </thead>
+                <tbody id="pacientes">
+                </tbody>
+            </table>
+            <div id="caixa_alerta"></div>
+        </main>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
