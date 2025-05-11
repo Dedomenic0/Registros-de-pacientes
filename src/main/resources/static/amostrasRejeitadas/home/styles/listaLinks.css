@@ -1,10 +1,11 @@
 aside {
-    display: block;
-    padding: 0.5em;
-    position: absolute;
+    display: flex;
+    /* padding: 0.5em; */
+    /* position: absolute; */
     background-color: #57b3ba46;
     border-radius: 8px;
-    margin: 5px;
+    /* margin: 5px; */
+    max-height: 50px;
 }
 
 li img {
@@ -19,7 +20,7 @@ aside li {
 
 aside ul {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     list-style: none;
 }
 
