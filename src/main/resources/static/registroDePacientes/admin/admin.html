@@ -35,7 +35,7 @@
     <div>
         <form action="">
             <label for="id_paciente">Identificador: </label>
-            <input type="number" id="id_paciente"  required>
+            <input type="number" id="id_paciente"  required="true">
             <input type="submit" id="reverter" value="Reverter">
             <input type="submit" id="deletar" value="Deletar">
         </form>
@@ -43,7 +43,7 @@
             <h1>Pacientes</h1>
             <table>
                 <thead>
-                    <tr style="background-color: rgb(255, 255, 255);">
+                    <tr>
                         <th>Identificador</th>
                         <th>Nome</th>
                         <th>Deletado em</th>
@@ -52,8 +52,14 @@
                 <tbody id="pacientes">
                 </tbody>
             </table>
-            <div id="caixa_alerta"></div>
         </main>
+        <div style="margin-top: 6em;">
+            <form class="excluir-setor">
+                <label for="setor-deletar">Setor:</label>
+                <input type="text"  required="true" id="setor-deletar">
+                <button >Excluir setor</button>
+            </form>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

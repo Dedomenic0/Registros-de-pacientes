@@ -31,15 +31,15 @@
                 </nav>
             </aside>
             <section class="envio__de__amostra">
-                <form class="formulario">
+    <form class="formulario">
                     <h1>AMOSTRAS REJEITADAS</h1>
      <select name="setor" id="setor">
         <option value="opt">-selecione um setor-</option>
         <option value="hematologia">HEMATOLOGIA</option>
         <option value="hemostasia">HEMOSTASIA</option>
      </select>
-    <input type="text" name="teste" id="texto" placeholder="Cod. da amostra" autocomplete="off">
-    <input type="text" list="locais" id="Coleta" placeholder="Local da coleta" >
+    <input type="text" name="teste" id="texto" placeholder="Cod. da amostra" autocomplete="off" required="true">
+    <input type="text" list="locais" id="Coleta" placeholder="Local da coleta" required="true" >
     <datalist id="locais">
     </datalist>
     <select name="motivo" id="motivo">
@@ -49,7 +49,7 @@
         <option value="COLETA_EM_TUBO_ERRADO"> Coleta em tubo tubo errado </option>
         <option value="OUTROS"> Outros </option>
     </select>
-    <button class="salvar__formulario" type="button" onclick="salvarTexto()">Salvar</button>
+    <button class="salvar__formulario" type="submit" onclick="salvarTexto()">Salvar</button>
 </form>
     </section>   
     <section class="contagem__final">

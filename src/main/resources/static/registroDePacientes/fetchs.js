@@ -201,6 +201,7 @@ async function fetchPegarImagem(id) {
             .then(data => {
                 const url = URL.createObjectURL(data);
                 if (data.size == 0) {
+                    erro("Nenhuma imagem encontrada")
                     return;
                 }
                 html.get("#imagem_paciente").src = url;
