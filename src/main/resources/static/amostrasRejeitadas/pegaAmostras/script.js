@@ -38,8 +38,7 @@ function criaTags (dados, url) {
     const colunaLocal = document.createElement("td");
     const colunaMotivo = document.createElement("td");
 
-    const dia = dados.data.split("-");
-    const diaFormatado = `${dia[2]}/${dia[1]}/${dia[0]}`
+    const diaFormatado = new Date(dados.data).toLocaleDateString();
 
     colunaId.textContent = dados.id;
     colunaData.textContent = diaFormatado;

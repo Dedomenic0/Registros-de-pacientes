@@ -139,8 +139,7 @@ function addDadosTabela(data) {
     data.content.forEach(data => {
         const tr = document.createElement("tr")
         tr.setAttribute("id", data.Id)
-        const dia = data.data.split("-");
-        const diaFormatado = `${dia[2]}/${dia[1]}/${dia[0]}`
+        const diaFormatado = new Date(data.data).toLocaleDateString();
         const diagnostico = data.diagnosticoFinal || "N/A";
 
         tr.innerHTML = `

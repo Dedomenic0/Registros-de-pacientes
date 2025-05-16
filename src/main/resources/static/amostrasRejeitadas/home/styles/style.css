@@ -52,7 +52,7 @@ h1{
     align-items: center;
     flex-direction: column;
     gap: 10px;
-    max-width: 300px;
+    max-width: 250px;
     background-color: #fdfbee67;
     padding: 10px;
     border-radius: 20px;
@@ -171,9 +171,10 @@ a{
 }
 
 .add-novo-local {
-    background-color: #b1afaf9d;
-    padding: 0.3em;
-    border-radius: 5px;
+    position: absolute;
+    background-color: #a6b8b8;
+    padding: 0.5em;
+    border-radius: 20px;
 }
 
 .add-novo-local--form {
@@ -201,11 +202,16 @@ a{
 }
 
 h3{
-    margin-top: 20vh;
+    font-size: 14px;
 }
 
-@media (min-height: 700px) {
-    h3 {
-        margin-top: 0vh;
+@media (min-width: 1281px) {
+
+    .envio__de__amostra {
+        padding: 5%;
+    }
+
+    .contagem__final {
+        padding: 3%;
     }
 }
